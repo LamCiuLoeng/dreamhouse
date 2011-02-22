@@ -2,7 +2,8 @@
 import logging
 import tornado.web
 
-from sys2do.util.taobao import TaoBao
+#from sys2do.util.taobao import TaoBao
+
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
