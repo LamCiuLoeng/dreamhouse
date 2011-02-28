@@ -6,7 +6,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 from sys2do.setting import SQLALCHEMY_DATABASE_URI
 
-engine = create_engine(SQLALCHEMY_DATABASE_URI, echo = False)
+engine = create_engine(SQLALCHEMY_DATABASE_URI, echo = True)
 maker = sessionmaker(autoflush = True, autocommit = False)
 DBSession = scoped_session(maker)
 DeclarativeBase = declarative_base()

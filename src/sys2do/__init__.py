@@ -17,10 +17,11 @@ logging.getLogger().setLevel(logging.DEBUG)
 
 application = tornado.web.Application([
     (r"/", MainHandler),
+    (r"/taobao/.*", TaobaoHandler),
 ], **setting)
 
 if __name__ == "__main__":
     http_server = tornado.httpserver.HTTPServer(application)
     http_server.listen(8888)
-    tornado.ioloop.IOLoop.instance().start()
     logging.info("starting torando web server")
+    tornado.ioloop.IOLoop.instance().start()

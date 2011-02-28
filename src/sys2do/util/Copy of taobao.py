@@ -5,13 +5,10 @@ import urllib
 import urllib2
 import json
 import traceback
-import logging
-
-from tornado.httpclient import AsyncHTTPClient
 
 class TaoBao(object):
 
-    def __init__(self, dict_param = {}, format = 'json',callback = None):
+    def __init__(self, dict_param = {}, format = 'json'):
         self._sercet_code = '2ea6266fb900a0f8640f4a394f837cab'
         self._taobao_url = 'http://gw.api.taobao.com/router/rest'
 
@@ -23,10 +20,8 @@ class TaoBao(object):
                              )
         self.set_params(dict_param)
         self.set_format(format)
-        self._callback = callback
-        self.rsp = None
         self._sign()
-
+#        self._fetch()
 
     def set_params(self, dict_param):
         if dict_param and isinstance(dict_param, dict):
@@ -40,34 +35,20 @@ class TaoBao(object):
         self._params['timestamp'] = time.strftime('%Y-%m-%d %X', time.localtime())
         self._params['sign'] = hmac.new(self._sercet_code,
                                         ''.join(["%s%s" % (k, v) for k, v in sorted(self._params.items())])).hexdigest().upper()
-                                        
-    def fetch(self):
-        http = AsyncHTTPClient()
-        http.fetch(self._taobao_url,method="POST",body=urllib.urlencode(self._params),callback = self.handleResponse)
-        
-        
-    def handleResponse(self,response):
-        self.rsp = response.body
-        f = file("e:/taobao.txt","ab")
-        f.write(self.rsp)
-        f.close()
-        logging.info(response.body)
-        data = self.get_data()
-        self._callback(data)
-    
-#    def _fetch(self):
-#        try:
-#            self.rsp = urllib2.urlopen(self._taobao_url, urllib.urlencode(self._params)).read()
-#        except:
-#            traceback.print_exc()
-#            self.rsp = None
+
+    def _fetch(self):
+        try:
+            self.rsp = urllib2.urlopen(self._taobao_url, urllib.urlencode(self._params)).read()
+        except:
+            traceback.print_exc()
+            self.rsp = None
 
     def get_data(self):
         if self.rsp:
             if 'json' == self._params['format']:
                     rsp = json.loads(self.rsp)
                     if 'error_response' in rsp:
-                        raise rsp["error_response"]["msg"]
+                        print rsp["error_response"]["msg"]
                         return None
                     else:
                         return rsp

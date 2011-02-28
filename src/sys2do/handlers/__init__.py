@@ -1,2 +1,2 @@
 # -*- coding: utf-8 -*-
-from MainHandler import MainHandler
+from MainHandler import *
