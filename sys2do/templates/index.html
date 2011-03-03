@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block main %}
+	<h1>Item List</h1>
+	<p><a href="/taobao/add">Add item from taobao.com</a></p>
+	<div id="div-main">
+		
+		
+		
+		{% for k in my_page.items %}
+			<div>
+				<a href="/item/detail?id={{k.id}}"><img src="{{k.pic_url}}"/></a>
+				<span>{{k.title}}</span>
+				<span>{{k.price}}</span>
+			</div>
+		{%end%}
+		
+		<p>{{my_page.pager('$link_first $link_previous ~5~ $link_next $link_last (Page $page of $page_count)')}}</p>
+	</div>
+{% end %}

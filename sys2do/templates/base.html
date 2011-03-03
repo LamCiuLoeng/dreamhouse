@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+ <head>
+  <title>{% block title %}Trading - sys2do{% end %}</title>
+  <meta name="Author" content="CL.Lam">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <link rel="stylesheet" type="text/css" href="{{ static_url("css/screen.css") }}" />
+  
+  {% block extCSS %}{% end %}
+
+  <script type="text/javascript" src="{{ static_url("js/jquery.min.js") }}"></script>
+  <script language="JavaScript" type="text/javascript">
+    //<![CDATA[
+          
+    //]]>
+   </script>
+   
+   {% block extJS %}{% end %}
+   
+ </head>
+
+ <body>
+  	<div id="div-body">
+  		{% block header %}<div id="div-header"><a href="/index">Homepage</a></div>{% end %}
+  		{% block main %}<div id="div-main">Overwrite this content</div>{% end %}
+  		{% block footer %}<div id="div-footer"><p>Footer Content</p></div>{% end %}
+  	</div>
+ </body>
+</html>
