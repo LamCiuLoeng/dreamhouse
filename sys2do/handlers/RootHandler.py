@@ -1,26 +1,92 @@
 # -*- coding: utf-8 -*-
 import logging, traceback
-from urllib import urlencode
 from datetime import datetime as dt
 import tornado.web
-from tornado.httpclient import AsyncHTTPClient
 from webhelpers.paginate import Page
+from sqlalchemy import or_, and_
 
 from sys2do.model import *
 from MethodDispatcher import MethodDispatcher
 from sys2do.util.taobao import TaoBao
-from sys2do import setting
 
 
-class MainHandler(MethodDispatcher):
+class RootHandler(MethodDispatcher):
     def index(self, **kw):
         items = DBSession.query(Item).all()
-#        import pdb
-#        pdb.set_trace()
-        my_page = Page(items, page = int(kw.get("page", 1)), url = lambda page:"%s?page=%d" % (self.request.uri, page))
-#        logging.info(my_page)
+        my_page = Page(items, page = int(kw.get("page", 1)), url = lambda page:"%s?page=%d" % (self.request.path, page))
         self.render("index.html", my_page = my_page)
 
+
+    def login(self, **kw):
+        if self.current_user :
+            self.redirect("/index")
+        else:
+            self.render("login.html")
+
+    def login_handler(self, **kw):
+        try:
+            DBSession.query(User).filter(and_(User.user_name == kw.get("username", None), User.password == kw.get("password", None))).one()
+        except:
+            self.redirect("/login")
+        else:
+            self.redirect("/user/index")
+
+
+    def register(self, **kw):
+        self.render("register.html")
+
+
+
+    def register_hander(self, **kw):
+        username = kw.get("username", None)
+        password = kw.get("password", None)
+        confirmed_password = kw.get("confirmed_password", None)
+        email = kw.get("email", None)
+
+        msg = []
+        if not username :
+            msg.append("User name could not be blank!")
+        elif password != confirmed_password :
+            msg.append("Password and confirmed password are not the same!")
+        elif not email :
+            msg.append("E-mail could not be blank!")
+        else:
+            try:
+                DBSession.query(User).filter(and_(User.active == 0, User.user_name == username)).one()
+                msg.append("The user name already exist!")
+            except:
+                pass
+
+        if msg :
+            self.redirect("/login", msg = msg)
+        else:
+            try:
+                u = User(user_name = username, password = password, email_address = email)
+                g = DBSession.query(Group).filter(Group.group_name == "user").one()
+                g.users.append(u)
+
+                DBSession.add(u)
+                DBSession.commit()
+            except:
+                DBSession.rollback()
+                self.redirect("/login")
+            else:
+                self.redirect("/login")
+
+
+    def logout(self):
+        self.redirect("/index")
+
+
+    def item_detail(self, **kw):
+        item = DBSession.query(Item).get(kw["id"])
+        self.render("item_detail.html", item = item)
+
+
+    def item_quick_search(self, **kw):
+        result = DBSession.query(Item).filter(Item.title.like("%%%s%%" % kw.get("q", ""))).all()
+        my_page = Page(result, page = int(kw.get("page", 1)), url = lambda page:"%s?q=%s&page=%d" % (self.request.path, kw.get("q", ""), page))
+        self.render("item_quick_search.html", my_page = my_page)
 
 #    def testip(self):
 #        if not self.request.remote_ip: self.finish()
@@ -38,10 +104,8 @@ class MainHandler(MethodDispatcher):
     def test2(self):
         self.write(self.session["aa"])
 
-class ItemHandler(MethodDispatcher):
-    def detail(self, **kw):
-        item = DBSession.query(Item).get(kw["id"])
-        self.render("item_detail.html", item = item)
+
+
 
 class TaobaoHandler(MethodDispatcher):
     def add(self):

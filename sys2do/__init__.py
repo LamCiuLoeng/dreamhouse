@@ -3,11 +3,11 @@ import os, logging, sys
 import tornado.httpserver
 import tornado.ioloop
 
+from sys2do.handlers import *
 
 __all__ = ["application"]
 
 
-from sys2do.handlers import *
 
 setting = {
            "static_path": os.path.join(os.path.dirname(__file__), "public"),
@@ -15,13 +15,14 @@ setting = {
            "login_url": "/login",
            "template_path" : os.path.join(os.path.dirname(__file__), "templates"),
            "debug" : True,
+           "xsrf_cookies": True,
            }
 
 logging.getLogger().setLevel(logging.DEBUG)
 
 application = tornado.web.Application([
-    (r"/", MainHandler),
-    (r"/item/.*", ItemHandler),
-    (r"/taobao/.*", TaobaoHandler),
-    (r"/.*", MainHandler, {"session" : {}}),
+    (r"/user/.*", UserHandler),
+    (r"/admin/.*", AdminHandler),
+    (r"/", RootHandler),
+    (r"/.*", RootHandler, {"session" : {}}),
 ], **setting)

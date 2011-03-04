@@ -24,16 +24,7 @@
   	<div id="div-body">
   		{% block header %}
   		<div id="div-header">
-  			<p><a href="/index">Homepage</a></p>
-  			{% if not handler.current_user %}
-  				<p><a href="/login">Login</a></p>
-  			{% else %}
-  				<p>Welcome , <a href="/user"></a> | <a href="/logout">Logout</a></p>
-  			{% end %}
-  			<form action="/item_quick_search" method="post">
-  				{{ xsrf_form_html() }}
-  				<p><input type="text" name="q"/>&nbsp;<input type="submit" value="Search"/> </p>
-  			</form>
+  			<p>Welcome ! | <a href="/logout">Logout</a></p>
   		</div>
   		{% end %}
   		{% block main %}<div id="div-main">Overwrite this content</div>{% end %}

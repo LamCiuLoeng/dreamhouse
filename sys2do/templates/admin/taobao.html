@@ -1,8 +1,9 @@
-{% extends "base.html" %}
+{% extends "admin_base.html" %}
 
 {% block main %}
 	<div id="div-main">
-		<form action="/taobao/save" method="POST">
+		<form action="/admin/taobao_save" method="POST">
+			{{ xsrf_form_html() }}
 			<p><label>Import By</label>
 			   <select name="type">
 				<option value="nickname">Nick Name</option>
@@ -19,6 +20,6 @@
 			<p><input type="submit" value="Submit"/></p>
 		</form>
 		
-		<a href="/index">Back to homepage</a>
+		<a href="/admin/index">Back to homepage</a>
 	</div>
 {% end %}
