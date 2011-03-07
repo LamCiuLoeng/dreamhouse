@@ -24,7 +24,7 @@
   	<div id="div-body">
   		{% block header %}
   		<div id="div-header">
-  			<p>Welcome ! | <a href="/logout">Logout</a></p>
+  			<p style="text-align:right">Welcome , {{handler.session["user_info"]["display_name"]}} | <a href="/index">Homepage</a> | <a href="/logout">Logout</a></p>
   		</div>
   		{% end %}
   		{% block main %}<div id="div-main">Overwrite this content</div>{% end %}

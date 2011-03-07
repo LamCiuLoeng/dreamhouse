@@ -17,6 +17,8 @@ class RootHandler(MethodDispatcher):
         self.render("index.html", my_page = my_page)
 
 
+
+
     def login(self, **kw):
         if self.current_user :
             self.redirect("/index")
@@ -25,17 +27,42 @@ class RootHandler(MethodDispatcher):
 
     def login_handler(self, **kw):
         try:
-            DBSession.query(User).filter(and_(User.user_name == kw.get("username", None), User.password == kw.get("password", None))).one()
+            u = DBSession.query(User).filter(and_(User.user_name == kw.get("username", None), User.password == kw.get("password", None))).one()
+            self.session["user_info"] = {
+                                         "id" : u.id,
+                                         "user_name" : u.user_name,
+                                         "display_name" : u.display_name,
+                                         "email_address" : u.email_address,
+                                         }
+            self.session["group_info"] = [str(g) for g in u.groups]
+            self.session["permission_info"] = u.permissions
+            self.session.save()
+            self.set_current_user(u.user_name)
         except:
             self.redirect("/login")
         else:
-            self.redirect("/user/index")
+#            if "admin" in self.session["group_info"]:
+#                self.redirect("/admin/index")
+#            elif "user" in self.session["group_info"]:
+#                self.redirect("/user/index")
+#            else:
+#                self.redirect("/index")
+            self.redirect("/user_dispatch")
+
+    def user_dispatch(self):
+        if self.get_current_user() :
+            if "admin" in self.session["group_info"]:
+                self.redirect("/admin/index")
+            elif "user" in self.session["group_info"]:
+                self.redirect("/user/index")
+            else:
+                self.redirect("/index")
+        else:
+            self.redirect("/index")
 
 
     def register(self, **kw):
         self.render("register.html")
-
-
 
     def register_hander(self, **kw):
         username = kw.get("username", None)
@@ -75,6 +102,7 @@ class RootHandler(MethodDispatcher):
 
 
     def logout(self):
+        self.clear_current_user()
         self.redirect("/index")
 
 
@@ -88,6 +116,17 @@ class RootHandler(MethodDispatcher):
         my_page = Page(result, page = int(kw.get("page", 1)), url = lambda page:"%s?q=%s&page=%d" % (self.request.path, kw.get("q", ""), page))
         self.render("item_quick_search.html", my_page = my_page)
 
+
+    def add_to_cart(self, **kw):
+        pass
+
+    def view_cart(self, **kw):
+        pass
+
+    @tornado.web.authenticated
+    def place_order(self, **kw):
+        pass
+
 #    def testip(self):
 #        if not self.request.remote_ip: self.finish()
 #        def _call(response):
@@ -99,10 +138,15 @@ class RootHandler(MethodDispatcher):
 
     def test1(self, **kw):
         self.session["aa"] = kw["aa"]
+        self.session.save()
         self.write("OK")
 
     def test2(self):
-        self.write(self.session["aa"])
+        self.render("test.html")
+
+    def testflash(self):
+        self.flash("hello,cl,testing")
+        self.write("OK")
 
 
 

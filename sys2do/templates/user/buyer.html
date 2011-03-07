@@ -1,0 +1,63 @@
+{% extends "user_base.html" %}
+
+{% block extCSS %}
+
+<style type="text/css">
+	#func-menu {
+        width: 200px;
+        border-style: none solid none solid;
+        border-color: #D0D0D0;
+        border-width: 1px;
+        margin: 10px;
+        }
+        
+    #func-menu ul{
+    	list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+	#func-menu li a {
+	          height: 32px;
+	          voice-family: "\"}\"";
+	          voice-family: inherit;
+	          height: 24px;
+	        text-decoration: none;
+	        }
+	
+	#func-menu li a:link, #func-menu li a:visited {
+	        color: #777;
+	        display: block;
+	        background: url({{static_url("images/func-menu.gif")}});
+	        padding: 8px 25px 0 10px;
+	        text-align: right;
+	        }
+	
+	#func-menu li a:hover, #func-menu li #current {
+	        color: #fff;
+	        background: url({{static_url("images/func-menu.gif")}}) 0 -32px;
+	        padding: 8px 25px 0 10px;
+	        text-align: right;
+	        }
+	
+	#func-menu li a:active {
+	        color: #fff;
+	        background: url({{static_url("images/func-menu.gif")}}) 0 -64px;
+	        padding: 8px 25px 0 10px;
+	        text-align: right;
+	        }
+</style>
+{% end %}
+
+{% block main-content %}
+	
+	<div id="div-main-content">
+		<div id="func-menu">
+        	<ul>
+				<li><a href="/user/buyer_orders">Orders</a></li>
+				<li><a href="/user/buyer_cart">Cart</a></li>
+				<li><a href="/user/buyer_point">Points</a></li>
+            </ul>
+         </div>
+	</div>
+{% end %}

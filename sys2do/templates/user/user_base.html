@@ -6,7 +6,8 @@
   <meta name="Keywords" content="">
   <meta name="Description" content="">
   <link rel="stylesheet" type="text/css" href="{{ static_url("css/screen.css") }}" />
-  
+  <link rel="stylesheet" type="text/css" href="{{ static_url("css/user_screen.css") }}" />
+
   {% block extCSS %}{% end %}
 
   <script type="text/javascript" src="{{ static_url("js/jquery.min.js") }}"></script>
@@ -24,10 +25,27 @@
   	<div id="div-body">
   		{% block header %}
   		<div id="div-header">
-  			<p>Welcome ! | <a href="/logout">Logout</a></p>
+  			<p style="text-align:right">Welcome , {{handler.session["user_info"]["display_name"]}}| <a href="/index">Homepage</a> | <a href="/logout">Logout</a></p>
   		</div>
   		{% end %}
-  		{% block main %}<div id="div-main">Overwrite this content</div>{% end %}
+  		{% block main %}
+  			<div id="div-main">
+  				 <div id="navcontainer">
+                        <ul id="navlist">
+                               <!-- CSS Tabs -->
+							<li><a href="/user/buyer">Buyer</a></li>
+							<li><a href="/user/seller">Seller</a></li>
+							<li><a href="/user/profile">Profile</a></li>
+                        </ul>
+                </div>
+				<div id="div-main-content">
+	  				{% block main-content %}
+	  					overwrite thie part
+	  				{% end %}
+				</div>  					
+  			</div>
+  		{% end %}
+  		
   		{% block footer %}<div id="div-footer"><p>Footer Content</p></div>{% end %}
   	</div>
  </body>

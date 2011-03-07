@@ -12,10 +12,15 @@
   <script type="text/javascript" src="{{ static_url("js/jquery.min.js") }}"></script>
   <script language="JavaScript" type="text/javascript">
     //<![CDATA[
-          
+          {%if handler.need_flash()%}
+          	$(document).ready(function(){
+	          	alert("{{handler.flash()}}");
+          	});
+          {%end%}
     //]]>
    </script>
    
+          		
    {% block extJS %}{% end %}
    
  </head>
@@ -28,7 +33,7 @@
   			{% if not handler.current_user %}
   				<p><a href="/login">Login</a></p>
   			{% else %}
-  				<p>Welcome , <a href="/user"></a> | <a href="/logout">Logout</a></p>
+  				<p>Welcome , <a href="/user_dispatch">{{handler.session["user_info"]["display_name"]}}</a> | <a href="/logout">Logout</a></p>
   			{% end %}
   			<form action="/item_quick_search" method="post">
   				{{ xsrf_form_html() }}

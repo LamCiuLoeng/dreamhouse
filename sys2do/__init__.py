@@ -4,6 +4,7 @@ import tornado.httpserver
 import tornado.ioloop
 
 from sys2do.handlers import *
+from sys2do.util.session import TornadoSessionManager
 
 __all__ = ["application"]
 
@@ -26,3 +27,12 @@ application = tornado.web.Application([
     (r"/", RootHandler),
     (r"/.*", RootHandler, {"session" : {}}),
 ], **setting)
+
+
+session_setting = {
+                   "secret" : "123321",
+                   "session_dir" : os.path.join(os.path.dirname(__file__), "session"),
+                   }
+
+
+application.session_manager = TornadoSessionManager(**session_setting)

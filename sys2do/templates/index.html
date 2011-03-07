@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 
 {% block main %}
-	<h1>Item List</h1>
-	<p><a href="/taobao/add">Add item from taobao.com</a></p>
 	<div id="div-main">
 		
 		<p>{{my_page.pager('$link_first $link_previous ~5~ $link_next $link_last (Page $page of $page_count)')}}</p>

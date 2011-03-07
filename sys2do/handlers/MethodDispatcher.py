@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-
+import os
 import tornado.web
+from sys2do.util.session import TornadoSession
 
 def delist_arguments(args):
     """
@@ -22,8 +23,7 @@ class MethodDispatcher(tornado.web.RequestHandler):
     """
 
     def initialize(self, **kw):
-        if "session" in kw:
-            self.session = kw["session"]
+        self.session = TornadoSession(self.application.session_manager, self)
 
     def _dispatch(self):
         """
@@ -62,3 +62,39 @@ class MethodDispatcher(tornado.web.RequestHandler):
     def post(self):
         """Returns self._dispatch()"""
         return self._dispatch()
+
+    #===========================================================================
+    # add the login function
+    #===========================================================================
+    def get_current_user(self):
+        return self.get_secure_cookie("user")
+
+    def set_current_user(self, name):
+        self.set_secure_cookie("user", name)
+
+    def clear_current_user(self):
+        self.clear_cookie("user")
+
+    #===========================================================================
+    # add the flash function
+    #===========================================================================
+
+    def flash(self, msg = None, status = "OK"):
+        if msg:
+            self.session["message"] = msg
+            self.session.save()
+        else:
+            tmp = self.session.pop("message")
+            self.session.save()
+            return tmp
+
+    def need_flash(self):
+        return bool(self.session.get("message", False))
+
+    #===========================================================================
+    # overwrite the render function
+    #===========================================================================
+#    def render(self, template_name, **kwargs):
+#        if hasattr(self, "template_folder"):
+#            template_name = os.path.join(self.template_folder, template_name)
+#        super(self.__class__, self).render(template_name, **kwargs)

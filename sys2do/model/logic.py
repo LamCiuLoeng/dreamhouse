@@ -1,12 +1,19 @@
 # -*- coding: utf-8 -*-
-from sqlalchemy import Table, ForeignKey, Column, Float, Boolean
+from sqlalchemy import ForeignKey, Column, Float, Boolean
 from sqlalchemy.types import Unicode, Integer, DateTime
-from sqlalchemy.orm import relation, synonym
+from sqlalchemy.orm import relation, backref
 
 from sys2do.model import DeclarativeBase, metadata, DBSession
 from auth import SysMixin
 
-__all__ = ["Item"]
+__all__ = ["Catetory", "Item"]
+
+
+class Catetory(DeclarativeBase, SysMixin):
+    __tablename__ = 'category'
+
+    id = Column(Integer, autoincrement = True, primary_key = True)
+
 
 class Item(DeclarativeBase, SysMixin):
 
@@ -45,3 +52,19 @@ class Item(DeclarativeBase, SysMixin):
     item_imgs = Column(Unicode(100))
     prop_imgs = Column(Unicode(100))
     sell_promise = Column(Boolean)
+
+
+class OrderHeader(DeclarativeBase, SysMixin):
+
+    __tablename__ = 'order_header'
+
+    id = Column(Integer, autoincrement = True, primary_key = True)
+
+
+class OrderDetail(DeclarativeBase, SysMixin):
+
+    __tablename__ = 'order_detail'
+
+    id = Column(Integer, autoincrement = True, primary_key = True)
+    header_id = Column(Integer, ForeignKey('order_header.id'))
+    header = relation(OrderHeader, backref = backref("details", order_by = id), primaryjoin = "and_(OrderHeader.id == OrderDetail.header_id, OrderDetail.active == 0)")
