@@ -1,17 +1,324 @@
 {% extends "base.html" %}
 
+{% block extCSS %}
+	<style type="text/css">
+	.bottom-box{
+		float:left;
+		width:250px;
+		text-align:center;
+		padding : 10px 5px 10px 10px;
+	}
+	</style>
+{% end %}
+
 {% block main %}
 	<div id="div-main">
-		<p>{{my_page.pager('$link_first $link_previous ~5~ $link_next $link_last (Page $page of $page_count)')}}</p>
+		<!-- part 1 begin -->
+	
+		<table cellspacing="0" cellpadding="0" border="0" align="center" width="1000">
+		  <tbody>
+		    <tr>
+		      <td>&nbsp;</td>
+		      <td>&nbsp;</td>
+		    </tr>
+		    <tr>
+		      <td align="left" width="537" valign="top"><img height="370" width="537" src="{{ static_url('images/index_35.jpg')}}"/></td>
+		      <td align="left" valign="top"><div class="div_login">
+		          <table cellspacing="0" cellpadding="0" border="0" width="100%">
+		            <tbody>
+		              <tr>
+		                <td background="{{ static_url('images/index_42.jpg')}}"><img height="35" width="106" src="{{ static_url('images/index_41.jpg')}}"/></td>
+		              </tr>
+		              <tr>
+		                <td height="45">&nbsp;</td>
+		              </tr>
+		              <tr>
+		                <td><table cellspacing="0" cellpadding="0" border="0" width="100%">
+		                    <tbody>
+		                      <tr>
+		                        <td align="center" width="145"><a href="/login"><img height="36" width="122" src="{{ static_url('images/index_45.jpg')}}"/></a></td>
+		                        <td align="center" width="145"><img height="36" width="95" src="{{ static_url('images/index_47.jpg')}}"/></td>
+		                        <td align="center"><a href="/register"><img height="37" width="122" src="{{ static_url('images/index_49.jpg')}}"/></a></td>
+		                      </tr>
+		                    </tbody>
+		                  </table></td>
+		              </tr>
+		            </tbody>
+		          </table>
+		        </div>
+		        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+		          <tbody>
+		            <tr>
+		              <td align="center" width="230"><img height="186" width="199" src="{{ static_url('images/index_54.jpg')}}"/></td>
+		              <td align="center"><img height="186" width="198" src="{{ static_url('images/index_55.jpg')}}"/></td>
+		            </tr>
+		          </tbody>
+		        </table></td>
+		    </tr>
+		    <tr>
+		      <td>&nbsp;</td>
+		      <td>&nbsp;</td>
+		    </tr>
+		  </tbody>
+		</table>
+			
+		<!-- part 1 end -->
+	
+		<!-- part 2 begin  -->
+		<table cellspacing="0" cellpadding="0" border="0" align="center" width="1000">
+		  <tbody>
+		    <tr>
+		      <td><table cellspacing="0" cellpadding="0" border="0" align="center" width="1000">
+		          <tbody>
+		            <tr>
+		              <td width="100" class="div_s1"><img height="25" width="100" src="{{ static_url('images/index_60.jpg')}}"/></td>
+		              <td width="101" class="div_s1"><img height="25" width="101" src="{{ static_url('images/index_62.jpg')}}"/></td>
+		              <td width="101" class="div_s2"><img height="25" width="101" src="{{ static_url('images/index_64.jpg')}}"/></td>
+		              <td>&nbsp;</td>
+		              <td height="25" bgcolor="#f3f3f3" align="center" width="100" class="div_s2"><a href="">更多...</a></td>
+		            </tr>
+		          </tbody>
+		        </table></td>
+		    </tr>
+		    <tr>
+		      <td>
+		      	{%for i in range(7)%}
+		      		{%if i==6%}
+		      			<div class="div_product_s2">
+		      		{%else%}
+				        <div class="div_product_s1">
+		      		{%end%}
+		          <table cellspacing="0" cellpadding="0" border="0" width="100%">
+		            <tbody>
+		              <tr>
+		                <td>&nbsp;</td>
+		              </tr>
+		              <tr>
+		                <td align="center"><img height="100" width="100" src="{{ static_url('images/index_70.jpg')}}"/></td>
+		              </tr>
+		              <tr>
+		                <td align="center" class="td_th">個性鋪棉保暖外套</td>
+		              </tr>
+		              <tr>
+		                <td align="center" class="td_price">一口价：89.00</td>
+		              </tr>
+		            </tbody>
+		          </table>
+		        </div>
+		        {%end%}
+				</td>
+		    </tr>
+		  </tbody>
+		</table>
 		
-		{% for k in my_page.items %}
-			<div>
-				<a href="/item_detail?id={{k.id}}"><img src="{{k.pic_url}}"/></a>
-				<span>{{k.title}}</span>
-				<span>{{k.price}}</span>
-			</div>
-		{%end%}
+		<!-- part 2 end -->
+	
+	
+		<!-- part 3 begin -->
+		<table cellspacing="0" cellpadding="0" border="0" align="center" width="1000">
+		  <tbody>
+		    <tr>
+		      <td><table cellspacing="0" cellpadding="0" border="0" width="100%">
+		          <tbody>
+		            <tr>
+		              <td bgcolor="#f3f3f3"><table cellspacing="0" cellpadding="0" border="0" width="100%">
+		                  <tbody>
+		                    <tr>
+		                    {%for i in range(4)%}
+		                      <td width="25%"><table cellspacing="0" cellpadding="0" border="0" width="100%">
+		                          <tbody>
+		                            <tr>
+		                              <td>&nbsp;</td>
+		                            </tr>
+		                            <tr>
+		                              <td align="center"><img height="140" width="140" src="{{ static_url('images/index_97.jpg')}}"/></td>
+		                            </tr>
+		                            <tr>
+		                              <td align="center" class="td_th">個性鋪棉保暖外套</td>
+		                            </tr>
+		                            <tr>
+		                              <td align="center" class="td_price">一口价：89.00</td>
+		                            </tr>
+		                          </tbody>
+		                        </table></td>
+		                       {%end%}
+		                    </tr>
+		                  </tbody>
+		                </table></td>
+		              <td width="268"><img height="240" width="268" src="{{ static_url('images/index_94.jpg')}}"/></td>
+		            </tr>
+		          </tbody>
+		        </table></td>
+		    </tr>
+		    <tr>
+		      <td>&nbsp;</td>
+		    </tr>
+		    <tr>
+			    <td><table cellspacing="0" cellpadding="0" border="0" align="center" width="1000">
+			      <tbody><tr>
+			        <td align="center">&nbsp;</td>
+			        <td height="25" bgcolor="#f3f3f3" align="center" width="100" class="div_s2"><a href="">更多...</a></td>
+			        </tr>
+			    </tbody></table></td>
+			  </tr>
+		    <tr>
+		      <td><table cellspacing="0" cellpadding="0" border="0" width="100%">
+		          <tbody>
+		            <tr>
+		              <td width="270"><img height="240" width="270" src="{{ static_url('images/index_110.jpg')}}"/></td>
+		              <td bgcolor="#f3f3f3"><table cellspacing="0" cellpadding="0" border="0" width="100%">
+		                  <tbody>
+		                    <tr>
+		                      {%for i in range(4)%}
+		                      <td width="25%"><table cellspacing="0" cellpadding="0" border="0" width="100%">
+		                          <tbody>
+		                            <tr>
+		                              <td>&nbsp;</td>
+		                            </tr>
+		                            <tr>
+		                              <td align="center"><img height="140" width="140" src="{{ static_url('images/index_97.jpg')}}"/></td>
+		                            </tr>
+		                            <tr>
+		                              <td align="center" class="td_th">個性鋪棉保暖外套</td>
+		                            </tr>
+		                            <tr>
+		                              <td align="center" class="td_price">一口价：89.00</td>
+		                            </tr>
+		                          </tbody>
+		                        </table></td>
+		                       {%end%}
+		                    </tr>
+		                  </tbody>
+		                </table></td>
+		            </tr>
+		          </tbody>
+		        </table></td>
+		    </tr>
+		  </tbody>
+		</table>
 		
-		<p>{{my_page.pager('$link_first $link_previous ~5~ $link_next $link_last (Page $page of $page_count)')}}</p>
-	</div>
+		<!-- part 3 end -->
+	
+	
+	
+		<!-- part 4 begin -->
+		<table cellspacing="0" cellpadding="0" border="0" align="center" width="1000">
+		  <tbody>
+		    <tr>
+		      <td>&nbsp;</td>
+		      <td>&nbsp;</td>
+		    </tr>
+		    <tr>
+		      <td background="{{ static_url('images/index_127.jpg')}}" align="left" width="190" valign="top"><table cellspacing="0" cellpadding="0" border="0" width="100%">
+		          <tbody>
+		            <tr>
+		              <td><ul>
+		                  <li style="margin: 0px 10px 0px 20px; width: 10px; height: 30px; padding-top: 10px;"><img height="9" width="9" src="{{ static_url('images/index_140.jpg')}}"/></li>
+		                  <li style="width: 100px; height: 30px; margin-left: 15px; padding-top: 10px;">连衣裙</li>
+		                </ul></td>
+		            </tr>
+		            <tr>
+		              <td height="5" align="center"><img height="5" width="137" src="{{ static_url('images/index_150.jpg')}}"/></td>
+		            </tr>
+		            <tr>
+		              <td><ul>
+		                  <li style="margin: 0px 10px 0px 20px; width: 10px; height: 30px; padding-top: 10px;"><img height="9" width="9" src="{{ static_url('images/index_140.jpg')}}"/></li>
+		                  <li style="width: 100px; height: 30px; margin-left: 15px; padding-top: 10px;">连衣裙</li>
+		                </ul></td>
+		            </tr>
+		            <tr>
+		              <td height="5" align="center"><img height="5" width="137" src="{{ static_url('images/index_150.jpg')}}"/></td>
+		            </tr>
+		            <tr>
+		              <td><ul>
+		                  <li style="margin: 0px 10px 0px 20px; width: 10px; height: 30px; padding-top: 10px;"><img height="9" width="9" src="{{ static_url('images/index_140.jpg')}}"/></li>
+		                  <li style="width: 100px; height: 30px; margin-left: 15px; padding-top: 10px;">连衣裙</li>
+		                </ul></td>
+		            </tr>
+		            <tr>
+		              <td height="5" align="center"><img height="5" width="137" src="{{ static_url('images/index_150.jpg')}}"/></td>
+		            </tr>
+		            <tr>
+		              <td><ul>
+		                  <li style="margin: 0px 10px 0px 20px; width: 10px; height: 30px; padding-top: 10px;"><img height="9" width="9" src="{{ static_url('images/index_140.jpg')}}"/></li>
+		                  <li style="width: 100px; height: 30px; margin-left: 15px; padding-top: 10px;">连衣裙</li>
+		                </ul></td>
+		            </tr>
+		            <tr>
+		              <td height="5" align="center"><img height="5" width="137" src="{{ static_url('images/index_150.jpg')}}"/></td>
+		            </tr>
+		            <tr>
+		              <td><ul>
+		                  <li style="margin: 0px 10px 0px 20px; width: 10px; height: 30px; padding-top: 10px;"><img height="9" width="9" src="{{ static_url('images/index_140.jpg')}}"/></li>
+		                  <li style="width: 100px; height: 30px; margin-left: 15px; padding-top: 10px;">连衣裙</li>
+		                </ul></td>
+		            </tr>
+		            <tr>
+		              <td height="5" align="center"><img height="5" width="137" src="{{ static_url('images/index_150.jpg')}}"/></td>
+		            </tr>
+		            <tr>
+		              <td><ul>
+		                  <li style="margin: 0px 10px 0px 20px; width: 10px; height: 30px; padding-top: 10px;"><img height="9" width="9" src="{{ static_url('images/index_140.jpg')}}"/></li>
+		                  <li style="width: 100px; height: 30px; margin-left: 15px; padding-top: 10px;">连衣裙</li>
+		                </ul></td>
+		            </tr>
+		            <tr>
+		              <td height="5" align="center"><img height="5" width="137" src="{{ static_url('images/index_150.jpg')}}"/></td>
+		            </tr>
+		            <tr>
+		              <td>&nbsp;</td>
+		            </tr>
+		            <tr>
+		              <td>&nbsp;</td>
+		            </tr>
+		            <tr>
+		              <td>&nbsp;</td>
+		            </tr>
+		            <tr>
+		              <td>&nbsp;</td>
+		            </tr>
+		          </tbody>
+		        </table></td>
+		      <td align="right" valign="top">
+		      <table cellspacing="0" cellpadding="0" border="0" width="800">
+		          <tbody>
+		            <tr>
+		              <td><table cellspacing="0" cellpadding="0" border="0" width="100%">
+		                  <tbody>
+		                    <tr>
+		                      <td width="244"><img height="32" width="244" src="{{ static_url('images/index_109.jpg')}}"/></td>
+		                      <td width="244"><img height="32" width="244" src="{{ static_url('images/index_110-43.jpg')}}"/></td>
+		                      <td width="244"><img height="32" width="244" src="{{ static_url('images/index_112.jpg')}}"/></td>
+		                      <td align="center"><a href="">更多...</a></td>
+		                    </tr>
+		                  </tbody>
+		                </table></td>
+		            </tr>
+		            <tr>
+		              <td bgcolor="#f3eee8" background="{{ static_url('images/index_134.jpg')}}" style="background-repeat: repeat-x;">
+		              {%for item in items%}
+		              	<div class="bottom-box">
+		              		<div style="background-color: white">
+		              		<a href="/item_detail?id={{item.id}}"><img width="200" src="{{item.pic_url}}"/></a>
+		              		<p>{{item.title}}</p>
+		              		<p class="td_price">{{item.price}}</p>
+		              		</div>
+		              	</div>
+		              {%end%}
+		              <br style="clear: both;"/>
+		              </td>
+		            </tr>
+		          </tbody>
+		        </table>
+		        </td>
+		    </tr>
+		    <tr>
+		      <td>&nbsp;</td>
+		      <td>&nbsp;</td>
+		    </tr>
+		  </tbody>
+		</table>
+		
+		<!-- part 4 end -->
+</div>
 {% end %}

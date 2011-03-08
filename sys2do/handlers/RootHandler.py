@@ -12,9 +12,11 @@ from sys2do.util.taobao import TaoBao
 
 class RootHandler(MethodDispatcher):
     def index(self, **kw):
-        items = DBSession.query(Item).all()
-        my_page = Page(items, page = int(kw.get("page", 1)), url = lambda page:"%s?page=%d" % (self.request.path, page))
-        self.render("index.html", my_page = my_page)
+#        items = DBSession.query(Item).all()
+#        my_page = Page(items, page = int(kw.get("page", 1)), url = lambda page:"%s?page=%d" % (self.request.path, page))
+#        self.render("index.html", my_page = my_page)
+        items = DBSession.query(Item).all()[:9]
+        self.render("index.html", items = items)
 
     def login(self, **kw):
         if self.current_user :

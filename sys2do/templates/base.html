@@ -1,7 +1,7 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
  <head>
-  <title>{% block title %}Trading - sys2do{% end %}</title>
+  <title>{% block title %}I-Go Buy{% end %}</title>
   <meta name="Author" content="CL.Lam">
   <meta name="Keywords" content="">
   <meta name="Description" content="">
@@ -29,16 +29,76 @@
   	<div id="div-body">
   		{% block header %}
   		<div id="div-header">
-  			<p><a href="/index">Homepage</a> | <a href="/view_cart">My Cart</a></p>
-  			{% if not handler.current_user %}
-  				<p><a href="/login">Login</a></p>
-  			{% else %}
-  				<p>Welcome , <a href="/user_dispatch">{{handler.session["user_info"]["display_name"]}}</a> | <a href="/logout">Logout</a></p>
-  			{% end %}
-  			<form action="/item_quick_search" method="post">
-  				{{ xsrf_form_html() }}
-  				<p><input type="text" name="q"/>&nbsp;<input type="submit" value="Search"/> </p>
-  			</form>
+		  			
+  			<table cellspacing="0" cellpadding="0" border="0" width="100%">
+			  <tbody>
+			    <tr>
+			      <td align="center">&nbsp;</td>
+			    </tr>
+			    <tr>
+			      <td align="center"><table cellspacing="0" cellpadding="0" border="0" width="1000">
+			          <tbody>
+			            <tr>
+			              <td width="200"><img height="66" width="200" src="{{ static_url('images/index_03.jpg')}}"></td>
+			              <td width="400">&nbsp;</td>
+			              <td><table cellspacing="0" cellpadding="0" border="0" width="100%">
+			                  <tbody>
+			                    <tr>
+			                      <td height="25">&nbsp;</td>
+			                      <td>&nbsp;</td>
+			                      <td>&nbsp;</td>
+			                    </tr>
+			                    <tr>
+			                      <td width="100"><a href="/view_cart"><img height="17" width="63" src="{{ static_url('images/index_06.jpg')}}"></a></td>
+			                      <td width="100"><img height="17" width="63" src="{{ static_url('images/index_08.jpg')}}"></td>
+			                      <td width="100">
+						  			{% if not handler.current_user %}
+						  				<p><a href="/login">Login</a></p>
+						  			{% else %}
+						  				<p>Welcome , <a href="/user_dispatch">{{handler.session["user_info"]["display_name"]}}</a> | <a href="/logout">Logout</a></p>
+						  			{% end %}
+			                      </td>
+			                      <td>&nbsp;</td>
+			                    </tr>
+			                  </tbody>
+			                </table></td>
+			            </tr>
+			          </tbody>
+			        </table></td>
+			    </tr>
+			    <tr>
+			      <td background="{{static_url('images/index_21111.jpg')}}" align="center"><table cellspacing="0" cellpadding="0" border="0" width="1000">
+			          <tbody>
+			            <tr>
+			              <td width="200"><a href="/index"><img height="43" width="200" src="{{ static_url('images/index_13.jpg')}}"></a></td>
+			              <td background="{{static_url('images/index_15555.jpg')}}" align="center" width="190"><img height="43" width="140" src="{{ static_url('images/index_15.jpg')}}"></td>
+			              <td background="{{static_url('images/index_15555.jpg')}}" align="center" width="190"><img height="43" width="140" src="{{ static_url('images/index_17.jpg')}}"></td>
+			              <td background="{{static_url('images/index_15555.jpg')}}" align="center" width="190"><img height="43" width="173" src="{{ static_url('images/index_19.jpg')}}"></td>
+			              <td width="225"><img height="43" width="225" src="{{ static_url('images/index_21.jpg')}}"></td>
+			            </tr>
+			          </tbody>
+			        </table></td>
+			    </tr>
+			    <tr>
+			      <td bgcolor="#cccccc" align="center">
+			      	<form action="/item_quick_search" method="post">
+              		{{ xsrf_form_html() }}
+			      	<table cellspacing="0" cellpadding="0" border="0" width="1000">
+			          <tbody>
+			            <tr>
+			              <td height="35" width="400">&nbsp;</td>
+			              <td width="320"><input type="text" id="textfield" class="input_search" name="q"></td>
+			              <td align="left">
+			              		<input type="image" height="25" width="50" src="{{ static_url('images/index_28.jpg')}}">
+			              </td>
+			            </tr>
+			          </tbody>
+			        </table>
+	              	</form>
+			        </td>
+			    </tr>
+			  </tbody>
+			</table>
   		</div>
   		{% end %}
   		{% block main %}<div id="div-main">Overwrite this content</div>{% end %}
