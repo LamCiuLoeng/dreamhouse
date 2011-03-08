@@ -8,7 +8,7 @@ import traceback
 import logging
 
 from tornado.httpclient import AsyncHTTPClient
-from sys2do.util.common import makeException
+from common import makeException
 
 class TaoBao(object):
 

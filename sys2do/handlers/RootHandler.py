@@ -16,9 +16,6 @@ class RootHandler(MethodDispatcher):
         my_page = Page(items, page = int(kw.get("page", 1)), url = lambda page:"%s?page=%d" % (self.request.path, page))
         self.render("index.html", my_page = my_page)
 
-
-
-
     def login(self, **kw):
         if self.current_user :
             self.redirect("/index")
@@ -41,13 +38,8 @@ class RootHandler(MethodDispatcher):
         except:
             self.redirect("/login")
         else:
-#            if "admin" in self.session["group_info"]:
-#                self.redirect("/admin/index")
-#            elif "user" in self.session["group_info"]:
-#                self.redirect("/user/index")
-#            else:
-#                self.redirect("/index")
             self.redirect("/user_dispatch")
+
 
     def user_dispatch(self):
         if self.get_current_user() :
@@ -118,10 +110,26 @@ class RootHandler(MethodDispatcher):
 
 
     def add_to_cart(self, **kw):
-        pass
+        cart = self.session.get("cart", {})
+        if kw["id"] not in cart:
+            cart[kw["id"]] = {
+                              "qty" : kw.get("qty", 1),
+                              }
+        else:
+            qty = int(cart[kw["id"]]["qty"])
+            cart[kw["id"]]["qty"] = qty + int(kw.get("qty", 1))
+        self.session["cart"] = cart
+        self.session.save()
+        self.redirect("/view_cart")
+
 
     def view_cart(self, **kw):
-        pass
+        cart = self.session.get("cart", {})
+        for k, v in cart.items():
+            cart[k].update({
+                            "item" : DBSession.query(Item).get(k)
+                            })
+        self.render("view_cart.html", cart = cart)
 
     @tornado.web.authenticated
     def place_order(self, **kw):

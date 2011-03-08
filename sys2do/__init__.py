@@ -6,8 +6,8 @@ import tornado.ioloop
 from sys2do.handlers import *
 from sys2do.util.session import TornadoSessionManager
 
-__all__ = ["application"]
 
+__all__ = ["application"]
 
 
 setting = {

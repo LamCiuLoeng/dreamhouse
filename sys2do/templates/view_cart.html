@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block main %}
+	<div id="div-main">
+			{{ xsrf_form_html() }}
+			<table cellpadding="3" cellspacing="1" border="1">
+				<thead>
+					<tr>
+						<td>Item</td>
+						<td>Price</td>
+						<td>Qty</td>
+					</tr>
+				</thead>
+				<tbody>
+					{% for k,v in cart.items()%}
+						<tr>
+							<td><a href="/item_detail?id={{v['item'].id}}">{{str(v["item"])}}</a></td>
+							<td>{{v["item"].price}}</td>
+							<td><input type="text" name="qty_{{v['item'].id}}" value="{{v['qty']}}"/>
+						</tr>
+					{% end %}
+				</tbody>
+			</table>
+			<p><a href="/index">Go On Shopping</a>&nbsp;&nbsp;&nbsp;<a href="/place_order">Go To Pay</a></p>
+
+	</div>
+{% end %}

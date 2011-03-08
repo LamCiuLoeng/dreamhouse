@@ -2,7 +2,6 @@
 
 {% block main %}
 	<div id="div-main">
-		
 		<p>{{my_page.pager('$link_first $link_previous ~5~ $link_next $link_last (Page $page of $page_count)')}}</p>
 		
 		{% for k in my_page.items %}

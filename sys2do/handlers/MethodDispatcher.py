@@ -3,6 +3,7 @@ import os
 import tornado.web
 from sys2do.util.session import TornadoSession
 
+
 def delist_arguments(args):
     """
     Takes a dictionary, 'args' and de-lists any single-item lists then

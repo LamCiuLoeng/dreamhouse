@@ -1,9 +1,23 @@
 {% extends "base.html" %}
 
+{% block extJS %}
+	<script language="JavaScript" type="text/javascript">
+    //<![CDATA[
+         
+    //]]>
+   </script>
+{% end %}
+
 {% block main %}
 	<div>
 		<h1>{{item.title}}</h1>
 		<p>Price : {{item.price}}</p>
+		<form action="/add_to_cart" method="post">
+			{{ xsrf_form_html() }}
+			<input type="hidden" name="id" value="{{item.id}}"/>
+			<input type="text" name="qty" value="1"/>
+			<input type="submit" value="Add To Cart"/>
+		</form>
 		<div>
 			{{item.desc}}
 		</div>

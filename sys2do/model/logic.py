@@ -6,13 +6,23 @@ from sqlalchemy.orm import relation, backref
 from sys2do.model import DeclarativeBase, metadata, DBSession
 from auth import SysMixin
 
-__all__ = ["Catetory", "Item"]
+__all__ = ["Catetory", "Item", "OrderHeader", "OrderDetail"]
 
 
 class Catetory(DeclarativeBase, SysMixin):
     __tablename__ = 'category'
 
     id = Column(Integer, autoincrement = True, primary_key = True)
+    name = Column(Unicode(100))
+    description = Column(Unicode(1000))
+    parent_id = Column(Integer, default = None)
+
+    @property
+    def parent(self):
+        try:
+            return DBSession.query(self.__class__).get(self.parent_id)
+        except:
+            return None
 
 
 class Item(DeclarativeBase, SysMixin):
@@ -54,11 +64,28 @@ class Item(DeclarativeBase, SysMixin):
     sell_promise = Column(Boolean)
 
 
+    def __str__(self): return self.title
+
+    def __repr__(self): return self.title
+
+
 class OrderHeader(DeclarativeBase, SysMixin):
 
     __tablename__ = 'order_header'
 
     id = Column(Integer, autoincrement = True, primary_key = True)
+    no = Column(Unicode(50))
+
+    ship_to_contact = Column(Unicode(100))
+    ship_to_phone = Column(Unicode(50))
+    ship_to_mobile = Column(Unicode(50))
+    ship_to_address = Column(Unicode(1000))
+    ship_type = Column(Unicode(50))
+    requirement = Column(Unicode(1000))
+    need_invoice = Column(Integer, default = 0)
+
+    total_ammount = Column(Float)
+    status = Column(Integer, default = 0)
 
 
 class OrderDetail(DeclarativeBase, SysMixin):
@@ -68,3 +95,14 @@ class OrderDetail(DeclarativeBase, SysMixin):
     id = Column(Integer, autoincrement = True, primary_key = True)
     header_id = Column(Integer, ForeignKey('order_header.id'))
     header = relation(OrderHeader, backref = backref("details", order_by = id), primaryjoin = "and_(OrderHeader.id == OrderDetail.header_id, OrderDetail.active == 0)")
+
+    item_id = Column(Integer, ForeignKey('item.id'))
+    item = relation(Item)
+    props = Column(Unicode(100))
+    qty = Column(Integer, default = 0)
+    price = Column(Float)
+    post_fee = Column(Float)
+    express_fee = Column(Float)
+    ems_fee = Column(Float)
+    ammount = Column(Float)
+    status = Column(Integer, default = 0)
