@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import sys, os, random, cStringIO
+import sys, os, random, cStringIO, urllib
 reload(sys)
 sys.setdefaultencoding('utf8')
 
@@ -19,7 +19,7 @@ DISPLAY_DATE_FORMAT = "%Y-%m-%d"
 
 
 __all__ = ["Date2Text", "sendEmail", "advancedSendMail", "number2alphabet", "null2blank",
-           "OrderedDict", "makeException", "OrderedSet", "Bunch", "partial"]
+           "OrderedDict", "makeException", "urldecode", "OrderedSet", "Bunch", "partial"]
 
 #def tabFocus(tab_type = ""):
 #    def decorator(fun):
@@ -272,6 +272,13 @@ def makeException(msg):
         def __repr__(self): return self.msg
 
     return _ExceptionClz
+
+
+def urldecode(str):
+    try:
+        return urllib.unquote(str).decode("utf-8")
+    except:
+        return str
 
 
 #def logError():

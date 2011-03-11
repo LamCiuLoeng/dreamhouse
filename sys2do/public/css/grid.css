@@ -5,18 +5,27 @@
 
 	Licensed under GPL and MIT.
 */
-ul,li {
-	list-style:none;
-	float:left;
-	margin:0px;
-	padding:0px;
+body,table,div,span,p,a,td,th,img {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	border: 0px;
 }
+
 body,td,th {
 	font-family: Tahoma, Geneva, sans-serif;
 	font-size: 12px;
 	color: #000;
 	line-height: normal;
 	text-decoration: none;
+}
+
+ul,li {
+	list-style:none;
+	float:left;
+	margin:0px;
+	padding:0px;
 }
 .td_th{
 	line-height:24px;
@@ -29,12 +38,8 @@ body,td,th {
 	color: #960;
 	text-decoration: none;
 }
-body {
-	margin-left: 0px;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-}
+
+
 .input_search{
 	width:300px;
 	border:#000 solid 1px;
@@ -666,4 +671,57 @@ dl,dt{
 
 .clearfix {
 	display: block;
+}
+
+
+
+
+/*new added class by CL.Lam*/
+#div-main{
+	margin: 0px auto;
+	width: 1000px;
+}
+
+.input_register{
+	width:200px;
+	height:30px;
+	border:#960 solid 1px;
+}
+.input_register_yz{
+	width:100px;
+	height:30px;
+	border:#960 solid 1px;
+}
+.register_title{
+	font-size:14px;
+	color:#666;
+}
+
+a.register_link:link {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: normal;
+	color: #69F;
+	text-decoration: none;
+}
+a.register_link:visited {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: normal;
+	color: #69F;
+	text-decoration: none;
+}
+a.register_link:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: normal;
+	color:#960;
+	text-decoration: none;
+}
+a.register_link:active {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: normal;
+	color:#960;
+	text-decoration: none;
 }

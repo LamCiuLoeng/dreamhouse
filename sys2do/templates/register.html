@@ -1,18 +1,119 @@
 {% extends "base.html" %}
 
+{% block header %}{%end%}
+
 {% block main %}
-	<h1>Login</h1>
-	
 	<div id="div-main">
-		<form action="/register_hander" method="post">
-			{{ xsrf_form_html() }}
-			<ul>
-				<li><label>User Name</label><input type="text" name="username"/></li>
-				<li><label>Password</label><input type="password" name="password"/></li>
-				<li><label>confirmed Password</label><input type="password" name="confirmed_password"/></li>
-				<li><label>E-mail</label><input type="text" name="email"/></li>
-			</ul>
-			<p><input type="submit" value="Submit"/>&nbsp;<input type="button" value="Cancel"/></p>
-		</form>
+		
+	
+	<form action="/register_hander" method="post">
+	{{ xsrf_form_html() }}
+		<table width="1000" border="0" align="center" cellpadding="0" cellspacing="0">
+		  <tr>
+		    <td>&nbsp;</td>
+		    <td>&nbsp;</td>
+		  </tr>
+		  <tr>
+		    <td width="207"><a href="/index"><img src="{{ static_url('images/register_page_03.jpg')}}" width="207" height="94" /></a></td>
+		    <td>&nbsp;</td>
+		  </tr>
+		</table>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+		    <td height="44" align="center" background="{{ static_url('images/register_page_06.jpg')}}"><table width="1000" border="0" cellspacing="0" cellpadding="0">
+		      <tr>
+		        <td><img src="{{ static_url('images/register_page_07.jpg')}}" width="300" height="44" /></td>
+		      </tr>
+		    </table></td>
+		  </tr>
+		</table>
+		<table width="1000" border="0" align="center" cellpadding="0" cellspacing="0">
+		  <tr>
+		    <td width="180">&nbsp;</td>
+		    <td width="20">&nbsp;</td>
+		    <td>&nbsp;</td>
+		  </tr>
+		  <tr>
+		    <td align="right" class="register_title">會員名：</td>
+		    <td>&nbsp;</td>
+		    <td><input type="text" name="username" id="username" class="input_register"/></td>
+		  </tr>
+		  <tr>
+		    <td align="right">&nbsp;</td>
+		    <td>&nbsp;</td>
+		    <td>&nbsp;</td>
+		  </tr>
+		  <tr>
+		    <td align="right" class="register_title">登陸密碼：</td>
+		    <td>&nbsp;</td>
+		    <td><input type="password" name="password" id="password" class="input_register"/></td>
+		  </tr>
+		  <tr>
+		    <td align="right">&nbsp;</td>
+		    <td>&nbsp;</td>
+		    <td>&nbsp;</td>
+		  </tr>
+		  <tr>
+		    <td align="right" class="register_title">確認密碼：</td>
+		    <td>&nbsp;</td>
+		    <td><input type="password" name="password" id="password" class="input_register"/></td>
+		  </tr>
+		  <tr>
+		    <td align="right">&nbsp;</td>
+		    <td>&nbsp;</td>
+		    <td>&nbsp;</td>
+		  </tr>
+		  <tr>
+		    <td align="right" class="register_title">驗證碼：</td>
+		    <td>&nbsp;</td>
+		    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		        <tr>
+		          <td width="120"><input type="text" name="textfield4" id="textfield4" class="input_register_yz"/></td>
+		          <td width="100">放驗證碼</td>
+		          <td>看不清楚？&nbsp;<a href="#" class="register_link">換一張。</a></td>
+		        </tr>
+		    </table></td>
+		  </tr>
+		  <tr>
+		    <td align="right">&nbsp;</td>
+		    <td>&nbsp;</td>
+		    <td>&nbsp;</td>
+		  </tr>
+		  <tr>
+		    <td align="right">&nbsp;</td>
+		    <td>&nbsp;</td>
+		    <td><input type="image" src="{{ static_url('images/register_page_11.jpg')}}" width="177" height="31" /></td>
+		  </tr>
+		  <tr>
+		    <td align="right">&nbsp;</td>
+		    <td>&nbsp;</td>
+		    <td>&nbsp;</td>
+		  </tr>
+		  <tr>
+		    <td align="right">&nbsp;</td>
+		    <td>&nbsp;</td>
+		    <td><a href="#" class="register_link">《I-GoBuy服務協議》</a></td>
+		  </tr>
+		  <tr>
+		    <td align="right">&nbsp;</td>
+		    <td>&nbsp;</td>
+		    <td>&nbsp;</td>
+		  </tr>
+		  <tr>
+		    <td align="right">&nbsp;</td>
+		    <td>&nbsp;</td>
+		    <td>&nbsp;</td>
+		  </tr>
+		</table>
+		<table width="1000" border="0" align="center" cellpadding="0" cellspacing="0">
+		  <tr>
+		    <td align="center"><img src="{{ static_url('images/login_page_20.jpg')}}" width="940" height="123" /></td>
+		  </tr>
+		</table>
+		
+	</form>
+	
 	</div>
 {% end %}
+
+{% block footer %}{% end %}

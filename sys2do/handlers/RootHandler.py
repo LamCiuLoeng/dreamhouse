@@ -85,7 +85,7 @@ class RootHandler(MethodDispatcher):
                 pass
 
         if msg :
-            self.redirect("/login", msg = msg)
+            self.redirect("/login")
         else:
             try:
                 u = User(user_name = username, password = password, email_address = email)

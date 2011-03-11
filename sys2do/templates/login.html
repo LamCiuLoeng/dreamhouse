@@ -1,18 +1,114 @@
 {% extends "base.html" %}
 
+{% block header %}{%end%}
+
 {% block main %}
-	<h1>Login</h1>
-	
-	<div id="div-main">
-		<form action="/login_handler" method="post">
-			{{ xsrf_form_html() }}
-			<ul>
-				<li><label>User Name</label><input type="text" name="username"/></li>
-				<li><label>Password</label><input type="password" name="password"/></li>
-			</ul>
-			<p><input type="submit" value="Submit"/></p>
-		</form>
-		
-		<p>Not a member ? <a href="/register">Register</a> Now!</p>
+
+	<div class="container_20">
+	<div class="grid_10">
+	  <table cellspacing="0" cellpadding="0" border="0" width="100%">
+	    <tbody><tr>
+	      <td width="100">&nbsp;</td>
+	      <td>&nbsp;</td>
+	    </tr>
+	    <tr>
+	      <td>&nbsp;</td>
+	      <td><a href="/index"><img height="78" width="252" src="{{ static_url('images/login_page_03.jpg')}}"></a></td>
+	    </tr>
+	    <tr>
+	      <td>&nbsp;</td>
+	      <td><img height="282" width="418" src="{{ static_url('images/login_page_10.jpg')}}"></td>
+	    </tr>
+	  </tbody>
+	  </table>
 	</div>
+	
+	
+	<div class="grid_10">
+	  <form action="/login_handler" method="post">
+	  {{ xsrf_form_html() }}
+		  <table cellspacing="0" cellpadding="0" border="0" width="100%">
+		    <tbody><tr>
+		      <td width="80">&nbsp;</td>
+		      <td>&nbsp;</td>
+		      <td>&nbsp;</td>
+		    </tr>
+		    <tr>
+		      <td>&nbsp;</td>
+		      <td width="328"><img height="39" width="328" src="{{ static_url('images/login_page_06.jpg')}}"></td>
+		      <td>&nbsp;</td>
+		    </tr>
+		    <tr>
+		      <td>&nbsp;</td>
+		      <td background="{{ static_url('images/login_page_08.jpg')}}"><table cellspacing="0" cellpadding="0" border="0" width="100%">
+		        <tbody><tr>
+		          <td>&nbsp;</td>
+		        </tr>
+		        <tr>
+		          <td><table cellspacing="0" cellpadding="0" border="0" width="100%">
+		            <tbody><tr>
+		              <td align="right" width="80">賬戶名</td>
+		              <td width="20">&nbsp;</td>
+		              <td><input type="text" class="input_un" id="username" name="username"></td>
+		            </tr>
+		          </tbody></table></td>
+		        </tr>
+		        <tr>
+		          <td>&nbsp;</td>
+		        </tr>
+		        <tr>
+		          <td><table cellspacing="0" cellpadding="0" border="0" width="100%">
+		            <tbody><tr>
+		              <td align="right" width="80">密　碼</td>
+		              <td width="20">&nbsp;</td>
+		              <td><input type="password" class="input_un" id="password" name="password"></td>
+		            </tr>
+		          </tbody></table></td>
+		        </tr>
+		        <tr>
+		          <td>&nbsp;</td>
+		        </tr>
+		        <tr>
+		          <td><table cellspacing="0" cellpadding="0" border="0" width="100%">
+		            <tbody><tr>
+		              <td align="right" width="80">&nbsp;</td>
+		              <td width="20">&nbsp;</td>
+		              <td><input type="image"" height="26" width="86" src="{{ static_url('images/login_page_13.jpg')}}"></td>
+		            </tr>
+		          </tbody></table></td>
+		        </tr>
+		        <tr>
+		          <td>&nbsp;</td>
+		        </tr>
+		        <tr>
+		          <td><table cellspacing="0" cellpadding="0" border="0" width="100%">
+		            <tbody><tr>
+		              <td align="right" width="140"><a href="/register">免費注冊</a></td>
+		              <td width="20">&nbsp;</td>
+		              <td><a href="#">忘記密碼?</a></td>
+		            </tr>
+		          </tbody></table></td>
+		        </tr>
+		        <tr>
+		          <td>&nbsp;</td>
+		        </tr>
+		      </tbody></table></td>
+		      <td>&nbsp;</td>
+		    </tr>
+		    <tr>
+		      <td>&nbsp;</td>
+		      <td><img height="63" width="328" src="{{ static_url('images/login_page_16.jpg')}}"></td>
+		      <td>&nbsp;</td>
+		    </tr>
+		  </tbody></table>
+		</div>
+		<div class="grid_20 juzhong"><img height="123" width="940" src="{{ static_url('images/login_page_20.jpg')}}"></div>
+	</form>
+	</div>
+	
+	
+	<br style="clear: both;"/>
+
 {% end %}
+
+{% block footer %}{% end %}
