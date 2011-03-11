@@ -8,7 +8,19 @@
 {% block extJS %}
 	<script language="JavaScript" type="text/javascript">
     //<![CDATA[
-         
+         $(document).ready(function(){
+        	 $(".item_img").hover(
+        		function(){
+        			$("#main_pic").attr("src",$("img",this).attr("src"));
+        			$(this).siblings("li").removeClass("bg_xt");
+        			$(this).addClass("bg_xt");
+        		},
+        		function(){
+        			//$(this).removeClass("bg_xt");
+        		}
+        	 );
+        	 
+         })
     //]]>
    </script>
 {% end %}
@@ -135,12 +147,16 @@
 		  <p class="cp_title">{{item.title}}</p>
 		  <table width="100%" cellspacing="0" cellpadding="0" border="0">
 		  <tbody><tr>
-		    <td width="40%" valign="top" align="center"><div style="border: 1px solid rgb(204, 204, 204); width: 310px; height: 310px;"><img width="310" height="310" src="{{item.pic_url}}"/></div>
+		    <td width="40%" valign="top" align="center"><div style="border: 1px solid rgb(204, 204, 204); width: 310px; height: 310px;"><img id="main_pic" width="310" height="310" src="{{item.pic_url}}"/></div>
 		    <div class="div_xiaotu">
 		    <ul>
 		    	{% if item.item_img%}
-			    	{%for url in item.item_img.split("|")%}
-				    	<li><img width="40" height="40" src="{{url}}"/></li>
+			    	{%for i,url in enumerate(item.item_img.split("|"))%}
+			    		{%if i==0 %}
+				    		<li class="item_img bg_xt"><img width="40" height="40" src="{{url}}"/></li>
+				    	{%else%}
+				    		<li class="item_img"><img width="40" height="40" src="{{url}}"/></li>
+				    	{%end%}
 			    	{%end%}		
 		    	{%end%}		    	
 		    </ul>
@@ -259,28 +275,11 @@
 		    <tr>
 		      <td><table width="100%" cellspacing="0" cellpadding="0" border="0" class="gary_box">
 		        <tbody><tr>
-		          <td class="box_padding"><table width="100%" cellspacing="0" cellpadding="0" border="0">
-		            <tbody><tr>
-		              <td width="33%" height="24">板型: 修身型</td>
-		              <td width="33%">貨號: X2-ZG03</td>
-		              <td width="33%">領型: 立領</td>
-		            </tr>
-		            <tr>
-		              <td width="33%" height="24">顏色: 深藍&nbsp;紅色&nbsp;黑色</td>
-		              <td width="33%">尺碼: L&nbsp;M&nbsp;XL</td>
-		              <td width="33%">面料分類: 純色布</td>
-		            </tr>
-		            <tr>
-		              <td height="24">板型: 修身型</td>
-		              <td>貨號: X2-ZG03</td>
-		              <td>領型: 立領</td>
-		            </tr>
-		            <tr>
-		              <td height="24">顏色: 深藍&nbsp;紅色&nbsp;黑色</td>
-		              <td>尺碼: L&nbsp;M&nbsp;XL</td>
-		              <td>面料分類: 純色布</td>
-		            </tr>
-		            </tbody></table></td>
+		          <td class="box_padding">
+			            {%for k,v in item.item_propertys%}
+		          			<div class="div_productinfo">{{k}} : {{v}}</div>
+			            {%end%}
+		          </td>
 		        </tr>
 		      </tbody></table></td>
 		    </tr>
@@ -288,7 +287,7 @@
 		      <td>&nbsp;</td>
 		    </tr>
 		    <tr>
-		      <td>{{item.desc}}</td>
+		      <td style="width:790px">{{item.desc}}</td>
 		    </tr>
 		  </tbody></table>
 		  </div>

@@ -62,11 +62,18 @@ class Item(DeclarativeBase, SysMixin):
     item_img = Column(Unicode(100))
     prop_img = Column(Unicode(100))
     sell_promise = Column(Boolean)
-
+    has_showcase = Column(Boolean)
 
     def __str__(self): return self.title
 
     def __repr__(self): return self.title
+
+    @property
+    def item_propertys(self):
+        try:
+            return [(p[2], p[3]) for p in [pro.split(":") for pro in self.props_name.split(";")]]
+        except:
+            return []
 
 
 class OrderHeader(DeclarativeBase, SysMixin):

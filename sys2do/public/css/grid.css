@@ -135,6 +135,13 @@ dl,dt{
 	color: #FFF;
 	text-decoration: none;
 }
+.div_productinfo{
+	padding-left:20px;
+	width:220px;
+	height:24px;
+	line-height:24px;
+	float:left;
+}
 .highlight{
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 24px;
@@ -159,7 +166,7 @@ dl,dt{
 	border:#ccc solid 1px;
 }
 .div_xiaotu .bg_xt{
-	background:url(images/product_page_1111.jpg);
+	background:url(/static/images/product_page_1111.jpg);
 }
 
 

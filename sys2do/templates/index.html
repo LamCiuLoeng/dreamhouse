@@ -124,20 +124,20 @@
 		              <td bgcolor="#f3f3f3"><table cellspacing="0" cellpadding="0" border="0" width="100%">
 		                  <tbody>
 		                    <tr>
-		                    {%for i in range(4)%}
+		                    {%for sc1 in show_case1%}
 		                      <td width="25%"><table cellspacing="0" cellpadding="0" border="0" width="100%">
 		                          <tbody>
 		                            <tr>
 		                              <td>&nbsp;</td>
 		                            </tr>
 		                            <tr>
-		                              <td align="center"><img height="140" width="140" src="{{ static_url('images/index_97.jpg')}}"/></td>
+		                              <td align="center"><a href="/item_detail?id={{sc1.id}}"><img height="140" width="140" src="{{sc1.pic_url}}"/></a></td>
 		                            </tr>
 		                            <tr>
-		                              <td align="center" class="td_th">個性鋪棉保暖外套</td>
+		                              <td align="center" class="td_th">{{sc1.title}}</td>
 		                            </tr>
 		                            <tr>
-		                              <td align="center" class="td_price">一口价：89.00</td>
+		                              <td align="center" class="td_price">一口价：{{sc1.price}}</td>
 		                            </tr>
 		                          </tbody>
 		                        </table></td>
@@ -169,20 +169,20 @@
 		              <td bgcolor="#f3f3f3"><table cellspacing="0" cellpadding="0" border="0" width="100%">
 		                  <tbody>
 		                    <tr>
-		                      {%for i in range(4)%}
+		                      {%for sc2 in show_case2%}
 		                      <td width="25%"><table cellspacing="0" cellpadding="0" border="0" width="100%">
 		                          <tbody>
 		                            <tr>
 		                              <td>&nbsp;</td>
 		                            </tr>
 		                            <tr>
-		                              <td align="center"><img height="140" width="140" src="{{ static_url('images/index_97.jpg')}}"/></td>
+		                              <td align="center"><a href="/item_detail?id={{sc2.id}}"><img height="140" width="140" src="{{sc2.pic_url}}"/></a></td>
 		                            </tr>
 		                            <tr>
-		                              <td align="center" class="td_th">個性鋪棉保暖外套</td>
+		                              <td align="center" class="td_th">{{sc2.title}}</td>
 		                            </tr>
 		                            <tr>
-		                              <td align="center" class="td_price">一口价：89.00</td>
+		                              <td align="center" class="td_price">一口价：{{sc2.price}}</td>
 		                            </tr>
 		                          </tbody>
 		                        </table></td>

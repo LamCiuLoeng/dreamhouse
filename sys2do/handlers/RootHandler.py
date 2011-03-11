@@ -3,7 +3,7 @@ import logging, traceback
 from datetime import datetime as dt
 import tornado.web
 from webhelpers.paginate import Page
-from sqlalchemy import or_, and_
+from sqlalchemy import or_, and_, func
 
 from sys2do.model import *
 from MethodDispatcher import MethodDispatcher
@@ -16,7 +16,13 @@ class RootHandler(MethodDispatcher):
 #        my_page = Page(items, page = int(kw.get("page", 1)), url = lambda page:"%s?page=%d" % (self.request.path, page))
 #        self.render("index.html", my_page = my_page)
         items = DBSession.query(Item).all()[:9]
-        self.render("index.html", items = items)
+        try:
+            show_case1 = DBSession.query(Item).order_by(func.random()).all()[:4]
+            show_case2 = DBSession.query(Item).order_by(func.random()).all()[:4]
+        except:
+            show_case1 = DBSession.query(Item).order_by(func.rand()).all()[:4]
+            show_case2 = DBSession.query(Item).order_by(func.rand()).all()[:4]
+        self.render("index.html", items = items, show_case1 = show_case1, show_case2 = show_case2)
 
     def login(self, **kw):
         if self.current_user :

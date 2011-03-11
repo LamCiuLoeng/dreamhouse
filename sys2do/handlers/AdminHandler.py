@@ -35,7 +35,7 @@ class AdminHandler(MethodDispatcher):
                   "cid", "seller_cids", "props", "pic_url", "num", "valid_thru", "list_time",
                   "delist_time", "stuff_status", "price", "post_fee", "express_fee", "ems_fee",
                   "has_discount", "freight_payer", "has_invoice", "has_warranty", "modified",
-                  "approve_status", "sell_promise", "desc","item_img","prop_img"]
+                  "approve_status", "sell_promise", "desc", "item_img", "prop_img", "has_showcase"]
         params1 = dict(
                     method = 'taobao.items.get',
                     nicks = nickname,
@@ -65,7 +65,7 @@ class AdminHandler(MethodDispatcher):
                         elif f == "item_img" :
                             if info["item_imgs"]: params[f] = "|".join([img["url"] for img in info["item_imgs"]["item_img"]])
                         elif f == "prop_img":
-                            if info["item_imgs"]: params[f]= "|".join([img["url"] for img in info["prop_imgs"]["prop_img"]])
+                            if info["item_imgs"]: params[f] = "|".join([img["url"] for img in info["prop_imgs"]["prop_img"]])
                         else : params[f] = info[f]
                     DBSession.add(Item(**params))
             except:
