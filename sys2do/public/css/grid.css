@@ -1,0 +1,662 @@
+/*
+	Variable Grid System.
+	Learn more ~ http://www.spry-soft.com/grids/
+	Based on 960 Grid System - http://960.gs/
+
+	Licensed under GPL and MIT.
+*/
+ul,li {
+	list-style:none;
+	float:left;
+	margin:0px;
+	padding:0px;
+}
+body,td,th {
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 12px;
+	color: #000;
+	line-height: normal;
+	text-decoration: none;
+}
+.td_th{
+	line-height:24px;
+}
+.td_price{
+	line-height:28px;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #960;
+	text-decoration: none;
+}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.input_search{
+	width:300px;
+	border:#000 solid 1px;
+}
+.div_login{
+	margin:0px 0px 15px 10px;
+	width:450px;
+	height:165px;
+	border:#ccc solid 1px;
+}
+.div_product_s1{
+	float:left;
+	width:142px;
+	height:190px;
+	border-top:#ccc solid 1px;
+	border-left:#ccc solid 1px;
+	border-bottom:#ccc solid 1px;
+}
+.div_product_s2{
+	float:left;
+	width:140px;
+	height:190px;
+	border-top:#ccc solid 1px;
+	border-left:#ccc solid 1px;
+	border-right:#ccc solid 1px;
+	border-bottom:#ccc solid 1px;
+}
+.div_s1{
+	border-top:#ccc solid 1px;
+	border-left:#ccc solid 1px;
+
+}
+.div_s2{
+	border-top:#ccc solid 1px;
+	border-left:#ccc solid 1px;
+	border-right:#ccc solid 1px;
+	
+}
+.div_display{
+	background-color:#FFF;
+	width:252px;
+	height:260px;
+	float:left;
+	margin:5px;
+}
+a:link {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: normal;
+	color: #333;
+	text-decoration: none;
+}
+a:visited {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: normal;
+	color: #333;
+	text-decoration: none;
+}
+a:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: normal;
+	color:#660;
+	text-decoration: none;
+}
+a:active {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: normal;
+	color:#660;
+	text-decoration: none;
+}
+.cp_title{
+	font-size: 12px;
+	font-weight: bold;
+	margin:0px;
+	padding:10px;
+}
+dl,dt{
+	display:inline;
+	margin:0;
+	padding:0;
+}
+.under_line{
+    border-bottom:#CCC solid 1px;
+}
+.gary_box{
+	border:#aaa solid 1px;
+	background-color:#eee;
+}
+.box_padding{
+	padding:30px;
+}
+.search_title{
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFF;
+	text-decoration: none;
+}
+.highlight{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #960;
+	text-decoration: none;
+}
+	
+.div_xiaotu{
+	margin-top:15px;
+	padding:0 15px;
+	width:310px;
+	height:55px;
+}
+.div_xiaotu ul li{
+	margin-left:10px;
+	padding:7px 0px 0px 1px;
+	width:45px;
+	height:46px;
+}
+.div_xiaotu ul li img{
+	border:#ccc solid 1px;
+}
+.div_xiaotu .bg_xt{
+	background:url(images/product_page_1111.jpg);
+}
+
+
+/* Containers
+----------------------------------------------------------------------------------------------------*/
+.container_20 {
+	margin-left: auto;
+	margin-right: auto;
+	width: 1000px;
+}
+
+/* Grid >> Global
+----------------------------------------------------------------------------------------------------*/
+
+.grid_1,
+.grid_2,
+.grid_3,
+.grid_4,
+.grid_5,
+.grid_6,
+.grid_7,
+.grid_8,
+.grid_9,
+.grid_10,
+.grid_11,
+.grid_12,
+.grid_13,
+.grid_14,
+.grid_15,
+.grid_16,
+.grid_17,
+.grid_18,
+.grid_19,
+.grid_20 {
+	display:inline;
+	float: left;
+	position: relative;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+/* Grid >> Children (Alpha ~ First, Omega ~ Last)
+----------------------------------------------------------------------------------------------------*/
+
+.alpha {
+	margin-left: 0;
+}
+
+.omega {
+	margin-right: 0;
+}
+
+/* Grid >> 20 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container_20 .grid_1 {
+	width:40px;
+}
+
+.container_20 .grid_2 {
+	width:90px;
+}
+
+.container_20 .grid_3 {
+	width:140px;
+}
+
+.container_20 .grid_4 {
+	width:190px;
+}
+
+.container_20 .grid_5 {
+	width:240px;
+}
+
+.container_20 .grid_6 {
+	width:290px;
+}
+
+.container_20 .grid_7 {
+	width:340px;
+}
+
+.container_20 .grid_8 {
+	width:390px;
+}
+
+.container_20 .grid_9 {
+	width:440px;
+}
+
+.container_20 .grid_10 {
+	width:490px;
+}
+
+.container_20 .grid_11 {
+	width:540px;
+}
+
+.container_20 .grid_12 {
+	width:590px;
+}
+
+.container_20 .grid_13 {
+	width:640px;
+}
+
+.container_20 .grid_14 {
+	width:690px;
+}
+
+.container_20 .grid_15 {
+	width:740px;
+}
+
+.container_20 .grid_16 {
+	width:790px;
+}
+
+.container_20 .grid_17 {
+	width:840px;
+}
+
+.container_20 .grid_18 {
+	width:890px;
+}
+
+.container_20 .grid_19 {
+	width:940px;
+}
+
+.container_20 .grid_20 {
+	width:990px;
+}
+
+
+
+/* Prefix Extra Space >> 20 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container_20 .prefix_1 {
+	padding-left:50px;
+}
+
+.container_20 .prefix_2 {
+	padding-left:100px;
+}
+
+.container_20 .prefix_3 {
+	padding-left:150px;
+}
+
+.container_20 .prefix_4 {
+	padding-left:200px;
+}
+
+.container_20 .prefix_5 {
+	padding-left:250px;
+}
+
+.container_20 .prefix_6 {
+	padding-left:300px;
+}
+
+.container_20 .prefix_7 {
+	padding-left:350px;
+}
+
+.container_20 .prefix_8 {
+	padding-left:400px;
+}
+
+.container_20 .prefix_9 {
+	padding-left:450px;
+}
+
+.container_20 .prefix_10 {
+	padding-left:500px;
+}
+
+.container_20 .prefix_11 {
+	padding-left:550px;
+}
+
+.container_20 .prefix_12 {
+	padding-left:600px;
+}
+
+.container_20 .prefix_13 {
+	padding-left:650px;
+}
+
+.container_20 .prefix_14 {
+	padding-left:700px;
+}
+
+.container_20 .prefix_15 {
+	padding-left:750px;
+}
+
+.container_20 .prefix_16 {
+	padding-left:800px;
+}
+
+.container_20 .prefix_17 {
+	padding-left:850px;
+}
+
+.container_20 .prefix_18 {
+	padding-left:900px;
+}
+
+.container_20 .prefix_19 {
+	padding-left:950px;
+}
+
+
+
+/* Suffix Extra Space >> 20 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container_20 .suffix_1 {
+	padding-right:50px;
+}
+
+.container_20 .suffix_2 {
+	padding-right:100px;
+}
+
+.container_20 .suffix_3 {
+	padding-right:150px;
+}
+
+.container_20 .suffix_4 {
+	padding-right:200px;
+}
+
+.container_20 .suffix_5 {
+	padding-right:250px;
+}
+
+.container_20 .suffix_6 {
+	padding-right:300px;
+}
+
+.container_20 .suffix_7 {
+	padding-right:350px;
+}
+
+.container_20 .suffix_8 {
+	padding-right:400px;
+}
+
+.container_20 .suffix_9 {
+	padding-right:450px;
+}
+
+.container_20 .suffix_10 {
+	padding-right:500px;
+}
+
+.container_20 .suffix_11 {
+	padding-right:550px;
+}
+
+.container_20 .suffix_12 {
+	padding-right:600px;
+}
+
+.container_20 .suffix_13 {
+	padding-right:650px;
+}
+
+.container_20 .suffix_14 {
+	padding-right:700px;
+}
+
+.container_20 .suffix_15 {
+	padding-right:750px;
+}
+
+.container_20 .suffix_16 {
+	padding-right:800px;
+}
+
+.container_20 .suffix_17 {
+	padding-right:850px;
+}
+
+.container_20 .suffix_18 {
+	padding-right:900px;
+}
+
+.container_20 .suffix_19 {
+	padding-right:950px;
+}
+
+
+
+/* Push Space >> 20 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container_20 .push_1 {
+	left:50px;
+}
+
+.container_20 .push_2 {
+	left:100px;
+}
+
+.container_20 .push_3 {
+	left:150px;
+}
+
+.container_20 .push_4 {
+	left:200px;
+}
+
+.container_20 .push_5 {
+	left:250px;
+}
+
+.container_20 .push_6 {
+	left:300px;
+}
+
+.container_20 .push_7 {
+	left:350px;
+}
+
+.container_20 .push_8 {
+	left:400px;
+}
+
+.container_20 .push_9 {
+	left:450px;
+}
+
+.container_20 .push_10 {
+	left:500px;
+}
+
+.container_20 .push_11 {
+	left:550px;
+}
+
+.container_20 .push_12 {
+	left:600px;
+}
+
+.container_20 .push_13 {
+	left:650px;
+}
+
+.container_20 .push_14 {
+	left:700px;
+}
+
+.container_20 .push_15 {
+	left:750px;
+}
+
+.container_20 .push_16 {
+	left:800px;
+}
+
+.container_20 .push_17 {
+	left:850px;
+}
+
+.container_20 .push_18 {
+	left:900px;
+}
+
+.container_20 .push_19 {
+	left:950px;
+}
+
+
+
+/* Pull Space >> 20 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container_20 .pull_1 {
+	left:-50px;
+}
+
+.container_20 .pull_2 {
+	left:-100px;
+}
+
+.container_20 .pull_3 {
+	left:-150px;
+}
+
+.container_20 .pull_4 {
+	left:-200px;
+}
+
+.container_20 .pull_5 {
+	left:-250px;
+}
+
+.container_20 .pull_6 {
+	left:-300px;
+}
+
+.container_20 .pull_7 {
+	left:-350px;
+}
+
+.container_20 .pull_8 {
+	left:-400px;
+}
+
+.container_20 .pull_9 {
+	left:-450px;
+}
+
+.container_20 .pull_10 {
+	left:-500px;
+}
+
+.container_20 .pull_11 {
+	left:-550px;
+}
+
+.container_20 .pull_12 {
+	left:-600px;
+}
+
+.container_20 .pull_13 {
+	left:-650px;
+}
+
+.container_20 .pull_14 {
+	left:-700px;
+}
+
+.container_20 .pull_15 {
+	left:-750px;
+}
+
+.container_20 .pull_16 {
+	left:-800px;
+}
+
+.container_20 .pull_17 {
+	left:-850px;
+}
+
+.container_20 .pull_18 {
+	left:-900px;
+}
+
+.container_20 .pull_19 {
+	left:-950px;
+}
+
+
+
+
+/* Clear Floated Elements
+----------------------------------------------------------------------------------------------------*/
+
+/* http://sonspring.com/journal/clearing-floats */
+
+.clear {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+/* http://perishablepress.com/press/2008/02/05/lessons-learned-concerning-the-clearfix-css-hack */
+
+.clearfix:after {
+	clear: both;
+	content: ' ';
+	display: block;
+	font-size: 0;
+	line-height: 0;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+.clearfix {
+	display: inline-block;
+}
+
+* html .clearfix {
+	height: 1%;
+}
+
+.clearfix {
+	display: block;
+}

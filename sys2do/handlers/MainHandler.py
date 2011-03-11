@@ -5,7 +5,6 @@ from datetime import datetime as dt
 import tornado.web
 from tornado.httpclient import AsyncHTTPClient
 from webhelpers.paginate import Page
-from sqlalchemy import or_, and_
 
 from sys2do.model import *
 from MethodDispatcher import MethodDispatcher
@@ -13,17 +12,40 @@ from sys2do.util.taobao import TaoBao
 from sys2do import setting
 
 
-class AdminHandler(MethodDispatcher):
+class MainHandler(MethodDispatcher):
     def index(self, **kw):
-        self.render("admin/index.html")
+        items = DBSession.query(Item).all()
+        my_page = Page(items, page = int(kw.get("page", 1)), url = lambda page:"%s?page=%d" % (self.request.path, page))
+        self.render("index.html", my_page = my_page)
 
 
+#    def testip(self):
+#        if not self.request.remote_ip: self.finish()
+#        def _call(response):
+#            logging.info(response.body)
+#            self.finish()
+#
+#        http = AsyncHTTPClient()
+#        http.fetch("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip=%s" % self.request.remote_ip, callback = _call)
 
-    def taobao_add(self):
-        self.render("admin/taobao.html")
+    def test1(self, **kw):
+        self.session["aa"] = kw["aa"]
+        self.write("OK")
+
+    def test2(self):
+        self.write(self.session["aa"])
+
+class ItemHandler(MethodDispatcher):
+    def detail(self, **kw):
+        item = DBSession.query(Item).get(kw["id"])
+        self.render("item_detail.html", item = item)
+
+class TaobaoHandler(MethodDispatcher):
+    def add(self):
+        self.render("taobao.html")
 
     @tornado.web.asynchronous
-    def taobao_save(self, **kw):
+    def save(self, **kw):
         if kw["type"] == "nickname":
             self._by_nickname(kw["value"], kw["page"])
 
@@ -35,7 +57,7 @@ class AdminHandler(MethodDispatcher):
                   "cid", "seller_cids", "props", "pic_url", "num", "valid_thru", "list_time",
                   "delist_time", "stuff_status", "price", "post_fee", "express_fee", "ems_fee",
                   "has_discount", "freight_payer", "has_invoice", "has_warranty", "modified",
-                  "approve_status", "sell_promise", "desc","item_img","prop_img"]
+                  "approve_status", "sell_promise", "desc"]
         params1 = dict(
                     method = 'taobao.items.get',
                     nicks = nickname,
@@ -52,20 +74,12 @@ class AdminHandler(MethodDispatcher):
                     for f in fields2:
                         if f in ["delist_time", "list_time", "modified", "created"] :
                             setattr(t, f, dt.strptime(info[f], "%Y-%m-%d %H:%M:%S"))
-                        elif f == "item_img" :
-                            if info["item_imgs"]: setattr(t, f, "|".join([img["url"] for img in info["item_imgs"]["item_img"]]))
-                        elif f == "prop_img":
-                            if info["item_imgs"]: setattr(t, f, "|".join([img["url"] for img in info["prop_imgs"]["prop_img"]]))
                         else:
                             setattr(t, f, info[f])
                 except:
                     params = {}
                     for f in fields2:
                         if f in ["delist_time", "list_time", "modified", "created"] : params[f] = dt.strptime(info[f], "%Y-%m-%d %H:%M:%S")
-                        elif f == "item_img" :
-                            if info["item_imgs"]: params[f] = "|".join([img["url"] for img in info["item_imgs"]["item_img"]])
-                        elif f == "prop_img":
-                            if info["item_imgs"]: params[f]= "|".join([img["url"] for img in info["prop_imgs"]["prop_img"]])
                         else : params[f] = info[f]
                     DBSession.add(Item(**params))
             except:
@@ -74,7 +88,7 @@ class AdminHandler(MethodDispatcher):
         def _getLastItemDetail(data):
             _getItemDetail(data)
             DBSession.commit()
-            self.render("admin/taobao_result.html")
+            self.render("taobao_result.html")
 
 
         def _getItemList(data):

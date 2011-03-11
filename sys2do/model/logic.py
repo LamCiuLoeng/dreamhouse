@@ -59,8 +59,8 @@ class Item(DeclarativeBase, SysMixin):
     modified = Column(DateTime)
     approve_status = Column(Unicode(100))
     product_id = Column(Integer)
-    item_imgs = Column(Unicode(100))
-    prop_imgs = Column(Unicode(100))
+    item_img = Column(Unicode(100))
+    prop_img = Column(Unicode(100))
     sell_promise = Column(Boolean)
 
 
